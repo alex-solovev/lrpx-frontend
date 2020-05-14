@@ -1,0 +1,40 @@
+{
+  "extends": [
+    "alexsolovev",
+    "airbnb",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "jsx": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": [],
+        "labelAttributes": [],
+        "controlComponents": ["TextInput"],
+        "depth": 3
+      }
+    ]
+  }
+}
