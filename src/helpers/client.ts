@@ -8,7 +8,7 @@ export type GraphQLResult = {
 export default new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    uri: process.env.GRAPHQL_URL,
+    uri: process.env.REACT_APP_GRAPHQL_URL,
     credentials: 'include',
   }),
 });

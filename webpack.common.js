@@ -23,7 +23,7 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      GRAPHQL_URL: 'http://localhost:4000/grpahql',
+      REACT_APP_GRAPHQL_URL: 'http://localhost:4000/grpahql',
     }),
   ],
 };
