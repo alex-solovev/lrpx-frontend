@@ -1,7 +1,5 @@
 import * as React from 'react';
-import {
-  HashRouter, Route, Switch, Redirect,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import LogInForm from 'features/Auth/LogIn.form';
 import SignUpForm from 'features/Auth/SignUp.form';
 import useAppSelector from 'hooks/useAppSelector';
@@ -37,7 +35,9 @@ const AppRouter: React.FC = () => {
     return <div>loading...</div>;
   }
 
-  return <HashRouter>{isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes}</HashRouter>;
+  return (
+    <BrowserRouter>{isAuthenticated ? authenticatedRoutes : unauthenticatedRoutes}</BrowserRouter>
+  );
 };
 
 export default AppRouter;
