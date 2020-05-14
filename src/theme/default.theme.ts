@@ -5,7 +5,8 @@ export default createGlobalStyle`
     --WHITE-color: #fff;
     --primary-color: #554348;
     --accent-color: #554348;
-    --bg-color: #D4F5F5;
+    /* --bg-color: #D4F5F5; */
+    --bg-color: #fff;
     --fg-color: var(--primary-color);
 
     --small-gap: 0.25rem;
