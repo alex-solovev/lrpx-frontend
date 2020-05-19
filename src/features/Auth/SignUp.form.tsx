@@ -6,6 +6,10 @@ import * as Yup from 'yup';
 import { TextInput } from 'components/lib/TextInput';
 import { Button } from 'components/lib/Button';
 import useAppSelector from 'hooks/useAppSelector';
+import { Form } from 'components/lib/Form';
+import { Text } from 'components/lib/Text';
+import { Grid } from 'components/lib/Grid';
+import FormGroup from 'components/FormGroup';
 import { signUp } from './actions';
 
 Yup.addMethod<Yup.StringSchema>(Yup.string, 'equalTo', function equalTo(ref, msg) {
@@ -50,63 +54,65 @@ const SignUpForm = (): JSX.Element => {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h2>Sing Up</h2>
-      {error && <div>{error}</div>}
-      <label htmlFor={emailKey}>
-        Email Address
-        <br />
-        <TextInput
-          id={emailKey}
-          name={emailKey}
-          type={emailKey}
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        <br />
-      </label>
-      <div>{formik.touched && formik.errors.email ? formik.errors.email : ''}</div>
-      <br />
+    <Form onSubmit={formik.handleSubmit}>
+      <Grid gap="medium" width={300}>
+        <Text tag="h2">Sing Up</Text>
+        {!!error && (
+          <Text tag="div" intent="error" padding="medium" border="medium" radius="small" filled>
+            {error}
+          </Text>
+        )}
+        <FormGroup
+          label="Email"
+          error={formik.touched && formik.errors.email ? formik.errors.email : ''}
+        >
+          <TextInput
+            id={emailKey}
+            name={emailKey}
+            type={emailKey}
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+        </FormGroup>
 
-      <label htmlFor={passwordKey}>
-        Password
-        <br />
-        <TextInput
-          id={passwordKey}
-          name={passwordKey}
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <br />
-      </label>
-      <div>{formik.touched && formik.errors.password ? formik.errors.password : ''}</div>
-      <br />
+        <FormGroup
+          label="Password"
+          error={formik.touched && formik.errors.password ? formik.errors.password : ''}
+        >
+          <TextInput
+            id={passwordKey}
+            name={passwordKey}
+            type="password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          />
+        </FormGroup>
 
-      <label htmlFor={passwordConfirmationKey}>
-        Confirm password
-        <br />
-        <TextInput
-          id={passwordConfirmationKey}
-          name={passwordConfirmationKey}
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.passwordConfirmation}
-        />
-        <br />
-      </label>
-      <div>
-        {formik.touched && formik.errors.passwordConfirmation
-          ? formik.errors.passwordConfirmation
-          : ''}
-      </div>
-      <br />
-
-      <Button type="submit" disabled={loading}>
-        Submit
-      </Button>
-      <Link to="/login">Log In</Link>
-    </form>
+        <FormGroup
+          label="Confirm password"
+          error={
+            formik.touched && formik.errors.passwordConfirmation
+              ? formik.errors.passwordConfirmation
+              : ''
+          }
+        >
+          <TextInput
+            id={passwordConfirmationKey}
+            name={passwordConfirmationKey}
+            type="password"
+            onChange={formik.handleChange}
+            value={formik.values.passwordConfirmation}
+          />
+          <br />
+        </FormGroup>
+        <div>
+          <Button type="submit" disabled={loading}>
+            Submit
+          </Button>
+        </div>
+        <Link to="/login">Log In</Link>
+      </Grid>
+    </Form>
   );
 };
 
