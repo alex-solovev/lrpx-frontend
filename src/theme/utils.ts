@@ -132,6 +132,13 @@ const getTokenCSSValue = (tokenKey: string, value?: SizeToken) => {
     return null;
   }
 
+  return value === 'none' ? 0 : `var(--${value}-${tokenKey})`;
+};
+const getBorderCSSValue = (tokenKey: string, value?: SizeToken) => {
+  if (!value) {
+    return null;
+  }
+
   return value === 'none' ? 0 : `var(--${value}-${tokenKey}) solid`;
 };
 
@@ -150,15 +157,15 @@ export const getBorder = (args: HelperArgs) => {
 
   if (Array.isArray(tokenValue)) {
     // TODO: handle this case properly
-    return `${property}: ${tokenValue.map((t) => getTokenCSSValue(tokenKey, t)).join(' ')};`;
+    return `${property}: ${tokenValue.map((t) => getBorderCSSValue(tokenKey, t)).join(' ')};`;
   }
 
   if (typeof tokenValue === 'object') {
     const isValueSet = (value: string | 0 | null) => value !== null;
-    const top = getTokenCSSValue(tokenKey, tokenValue.top);
-    const right = getTokenCSSValue(tokenKey, tokenValue.right);
-    const bottom = getTokenCSSValue(tokenKey, tokenValue.bottom);
-    const left = getTokenCSSValue(tokenKey, tokenValue.left);
+    const top = getBorderCSSValue(tokenKey, tokenValue.top);
+    const right = getBorderCSSValue(tokenKey, tokenValue.right);
+    const bottom = getBorderCSSValue(tokenKey, tokenValue.bottom);
+    const left = getBorderCSSValue(tokenKey, tokenValue.left);
 
     return `
       ${isValueSet(top) ? `${property}-top: ${top};` : ''}
@@ -168,7 +175,7 @@ export const getBorder = (args: HelperArgs) => {
     `;
   }
 
-  return `${property}: ${getTokenCSSValue(tokenKey, tokenValue)};`;
+  return `${property}: ${getBorderCSSValue(tokenKey, tokenValue)};`;
 };
 
 export const getMargin = (args: HelperArgs) => {
@@ -303,13 +310,13 @@ export const getRadius = (args: HelperArgs) => {
 export const getShapeStyles = (args: HelperArgs) => `
   ${getPadding(args)}
   ${getMargin(args)}
+  ${getRadius(args)}
+  ${getBorder(args)}
 `;
 
 export const getTextStyles = (args: HelperArgs) => `
   ${getTextSize(args)}
   ${getTextWeight(args)}
-  ${getRadius(args)}
-  ${getBorder(args)}
 `;
 
 export const getColorStyles = (args: HelperArgs) => {
