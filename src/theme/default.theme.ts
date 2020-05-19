@@ -1,23 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
+import { getCSSTokens, tokens } from './utils';
 
 export default createGlobalStyle`
   :root {
-    --WHITE-color: #fff;
-    --primary-color: #554348;
-    --accent-color: #554348;
-    /* --bg-color: #D4F5F5; */
-    --bg-color: #fff;
-    --fg-color: var(--primary-color);
-
-    --small-gap: 0.25rem;
-    --medium-gap: 1rem;
-    --large-gap: 1.5rem;
-
-    --default-border: 2px;
-    --default-radius: 2px;
+    ${getCSSTokens(tokens)}
   }
 
   html {
     background-color: var(--bg-color);
+  }
+
+  body {
+    font-family: sans-serif;
   }
 `;
