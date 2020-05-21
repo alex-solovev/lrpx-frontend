@@ -15,8 +15,8 @@ export const Button = styled.button<BaseElementProps>`
 
 Button.defaultProps = {
   intent: 'accent',
-  padding: ['small', 'medium'],
-  border: 'small',
+  padding: 'small',
+  border: 'medium',
   radius: 'small',
   text: 'body',
   weight: 'bold',
