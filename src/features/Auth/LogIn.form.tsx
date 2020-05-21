@@ -70,7 +70,11 @@ const LoginForm = (): JSX.Element => {
             Submit
           </Button>
         </div>
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/signup">
+          <Text tag="span" intent="accent">
+            Sign Up
+          </Text>
+        </Link>
       </Grid>
     </Form>
   );

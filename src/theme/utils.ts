@@ -5,12 +5,12 @@ export const tokens = {
     white: '#ffffff',
     black: '#000000',
     primary: '#000000',
-    secondary: '#00ff00',
-    accent: '#0000ff',
-    warning: 'orange',
-    error: 'red',
-    bg: '#FAFAFF',
-    fg: '#1C1C1C',
+    secondary: '#000000',
+    accent: '#000000',
+    warning: '#666666',
+    error: '#333333',
+    bg: '#ffffff',
+    fg: '#111111',
   },
   gap: {
     small: '0.25rem',
@@ -20,7 +20,8 @@ export const tokens = {
   radius: {
     small: '2px',
     medium: '8px',
-    large: '50%',
+    large: '50px',
+    circle: '50%',
   },
   border: {
     small: '1px',
@@ -142,6 +143,7 @@ const getBorderCSSValue = (tokenKey: string, value?: SizeToken) => {
   return value === 'none' ? 0 : `var(--${value}-${tokenKey}) solid`;
 };
 
+// TODO: refactor functions below so there are no repetitive code
 export const getBorder = (args: HelperArgs) => {
   const property = 'border';
   const tokenKey = 'border';

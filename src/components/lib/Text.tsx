@@ -73,13 +73,13 @@ Heading5.defaultProps = {
   margin: 'none',
 };
 
-export const Bold = styled.b<BaseElementProps>`
+export const TextBold = styled.b<BaseElementProps>`
   ${(props) => getShapeStyles(props)}
   ${(props) => getTextStyles(props)}
   ${(props) => getColorStyles(props)}
 `;
 
-Bold.defaultProps = {
+TextBold.defaultProps = {
   weight: 'bold',
 };
 
@@ -167,7 +167,7 @@ export const Text = ({
       Element = Heading5;
       break;
     case 'b':
-      Element = Bold;
+      Element = TextBold;
       break;
     case 'i':
       Element = Italic;

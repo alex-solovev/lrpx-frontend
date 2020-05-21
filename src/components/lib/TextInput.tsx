@@ -15,7 +15,7 @@ export const TextInput = styled.input<BaseElementProps>`
 
 TextInput.defaultProps = {
   intent: 'primary',
-  padding: ['small', 'medium'],
+  padding: 'small',
   border: 'small',
   radius: 'small',
   text: 'body',

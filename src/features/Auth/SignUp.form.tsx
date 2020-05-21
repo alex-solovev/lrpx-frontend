@@ -110,7 +110,11 @@ const SignUpForm = (): JSX.Element => {
             Submit
           </Button>
         </div>
-        <Link to="/login">Log In</Link>
+        <Link to="/login">
+          <Text tag="span" intent="accent">
+            Log In
+          </Text>
+        </Link>
       </Grid>
     </Form>
   );
